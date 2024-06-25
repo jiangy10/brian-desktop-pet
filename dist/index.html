@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+        .pet {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            animation: move 5s infinite alternate;
+        }
+        @keyframes move {
+            from {
+                right: 0;
+            }
+            to {
+                right: calc(100% - 300px);
+            }
+        }
+    </style>
 <script defer src="bundle.js"></script></head>
 <body>
+    <div class="pet">
+        <img src="images/stand.png" alt="Desktop Pet" />
+    </div>
     <h1>Hello World!</h1>
     <p>
         We are using Node.js <span id="node-version"></span>,
         Chromium <span id="chrome-version"></span>,
         and Electron <span id="electron-version"></span>.
     </p>
+    <script src="renderer.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ import { app, BrowserWindow, TouchBar, screen } from 'electron';
 import path from 'node:path';
 const { TouchBarButton } = TouchBar;
 
-function createCounterButton(){
+function createCounterButton() {
   let counter = 0;
 
   const button = new TouchBarButton({
@@ -11,7 +11,7 @@ function createCounterButton(){
     backgroundColor: '#6ab04c',
     click: () => {
       update();
-   }
+    }
   });
 
   const update = () => {
@@ -22,19 +22,26 @@ function createCounterButton(){
   return button;
 }
 
-function createTouchBar(){
+function createTouchBar() {
   const counterButton = createCounterButton();
   const touchBar = new TouchBar({
     items: [counterButton]
   });
-  
+
   return touchBar;
 }
 
-function createWindow () {
+function createWindow() {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 300,
+    height: 300,
+    x: width - 300,
+    y: height - 300,
+    frame: false,
+    transparent: true,
+    alwaysOnTop: true,
   })
   win.setTouchBar(createTouchBar())
   win.loadFile('index.html')

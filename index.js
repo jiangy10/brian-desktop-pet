@@ -1,7 +1,6 @@
-require('electron/main')
-const { app, BrowserWindow, TouchBar } = require('electron/main')
-const { TouchBarButton } = TouchBar
-const path = require('node:path')
+import { app, BrowserWindow, TouchBar, screen } from 'electron';
+import path from 'node:path';
+const { TouchBarButton } = TouchBar;
 
 function createCounterButton(){
   let counter = 0;
@@ -36,9 +35,6 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
   })
   win.setTouchBar(createTouchBar())
   win.loadFile('index.html')

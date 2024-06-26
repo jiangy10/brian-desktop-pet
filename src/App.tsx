@@ -1,7 +1,14 @@
-import React from 'react';
+import './App.css';
+import Character from './components/Character';
 
-const App: React.FC = () => {
-  return <div>Hello, React with TypeScript in Electron!</div>;
-};
+function App() {
+  return (
+    <div className="App">
+      <div>
+        <Character />
+      </div>
+    </div>
+  );
+}
 
 export default App;

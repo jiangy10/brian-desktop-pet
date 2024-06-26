@@ -1,5 +1,4 @@
-import { app, BrowserWindow, TouchBar, screen } from 'electron';
-import path from 'node:path';
+const { app, BrowserWindow, TouchBar, screen } = require('electron');
 const { TouchBarButton } = TouchBar;
 
 function createCounterButton() {
@@ -22,6 +21,7 @@ function createCounterButton() {
   return button;
 }
 
+
 function createTouchBar() {
   const counterButton = createCounterButton();
   const touchBar = new TouchBar({
@@ -39,26 +39,27 @@ function createWindow() {
     height: 300,
     x: width - 300,
     y: height - 300,
-    frame: false,
-    transparent: true,
+    frame: true,
+    transparent: false,
     alwaysOnTop: true,
-  })
-  win.setTouchBar(createTouchBar())
-  win.loadFile('index.html')
-}
-
-app.whenReady().then(() => {
-  createWindow()
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+    webPreferences: {
+      nodeIntegration: true
     }
   })
-})
+  win.setTouchBar(createTouchBar())
+  win.loadURL('http://localhost:3000');
+}
+
+app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});

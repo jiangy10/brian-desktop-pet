@@ -35,19 +35,22 @@ function createWindow() {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
   const win = new BrowserWindow({
-    width: 300,
-    height: 300,
-    x: width - 300,
-    y: height - 300,
-    frame: true,
-    transparent: false,
+    width: width,
+    height: height,
+    x: width / 2,
+    y: height - 200,
+    frame: false,
+    transparent: true,
     alwaysOnTop: true,
+    focusable: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
   win.setTouchBar(createTouchBar())
+  win.setIgnoreMouseEvents(true);
   win.loadURL('http://localhost:3000');
+  move(win);
 }
 
 app.whenReady().then(createWindow);

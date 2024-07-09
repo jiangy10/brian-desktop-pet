@@ -1,6 +1,6 @@
 import { Status } from "./models";
 
-const standLeft: Status = {
+export const standLeft: Status = {
     name: "Stand Left",
     src: "standLeft",
     duration: 1000
@@ -9,7 +9,7 @@ const standLeft: Status = {
 const standRight: Status = {
     name: "Stand Right",
     src: "standRight",
-    duration: 1000
+    duration: 2000
 }
 
 const moveLeft: Status = {
@@ -26,5 +26,7 @@ const moveRight: Status = {
 
 export const statuses: Status[] = [
     standLeft,
-    standRight
+    standRight,
+    moveLeft,
+    moveRight
 ];

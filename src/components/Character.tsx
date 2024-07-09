@@ -8,7 +8,7 @@ export default function Character(): React.JSX.Element {
     const status: Status = getStatus();
     console.log(standLeft, typeof standLeft);
     return (
-    <div>
-        <img src={standRight} className={"character"} />
-    </div>);
+        <div>
+            something here
+        </div>);
 }

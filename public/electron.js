@@ -38,7 +38,7 @@ function createWindow() {
     width: width,
     height: height,
     x: width / 2,
-    y: height - 200,
+    y: height,
     frame: false,
     transparent: true,
     alwaysOnTop: true,

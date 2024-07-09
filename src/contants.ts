@@ -1,32 +1,49 @@
 import { Status } from "./models";
+import move_left from "./images/move/move_left.gif";
+import move_right from "./images/move/move_right.gif";
+import research_left from "./images/research/research_left.gif";
+import research_right from "./images/research/research_right.gif";
 
 export const standLeft: Status = {
     name: "Stand Left",
     src: "standLeft",
-    duration: 1000
+    duration: 5000
 }
 
 const standRight: Status = {
     name: "Stand Right",
     src: "standRight",
-    duration: 2000
+    duration: 5000
 }
 
 const moveLeft: Status = {
     name: "Move Left",
-    src: "moveLeft",
-    duration: 1000
+    src: move_left,
+    duration: 5000
 }
 
 const moveRight: Status = {
     name: "Move Right",
-    src: "moveRight",
-    duration: 1000
+    src: move_right,
+    duration: 5000
+}
+
+const researchLeft: Status = {
+    name: "Research Left",
+    src: research_left,
+    duration: 5000
+}
+
+const researchRight: Status = {
+    name: "Research Right",
+    src: research_right,
+    duration: 5000
+
 }
 
 export const statuses: Status[] = [
-    standLeft,
-    standRight,
     moveLeft,
-    moveRight
+    moveRight,
+    researchLeft,
+    researchRight,
 ];

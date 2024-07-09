@@ -1,5 +1,6 @@
-
 import { getStatus } from '../functions/actions';
+import move_left from '../images/move/move_left.gif';
+import research_left from '../images/research/research_left.gif';
 import { Status } from '../models';
 import { useState, useEffect } from 'react';
 import './Character.css';
@@ -10,14 +11,13 @@ export default function Character(): React.JSX.Element {
 
     useEffect(() => {
         setTimeout(()=>{
-            const newStatus = getStatus();
+            const newStatus = getStatus(status);
             setStatus(newStatus);
-            // console.log(newStatus);
         }, status.duration)
     }, [status])
 
     return (
         <div>
-            something here
+            <img src={status.src} className={"character"}></img>
         </div>);
 }

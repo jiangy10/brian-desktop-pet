@@ -19,25 +19,27 @@ const standRight: Status = {
 const moveLeft: Status = {
     name: "Move Left",
     src: move_left,
-    duration: 5000
+    duration: 1800,
+    speed: -10
 }
 
 const moveRight: Status = {
     name: "Move Right",
     src: move_right,
-    duration: 5000
+    duration: 1800,
+    speed: 10
 }
 
 const researchLeft: Status = {
     name: "Research Left",
     src: research_left,
-    duration: 5000
+    duration: 2700
 }
 
 const researchRight: Status = {
     name: "Research Right",
     src: research_right,
-    duration: 5000
+    duration: 2700
 
 }
 
@@ -45,5 +47,5 @@ export const statuses: Status[] = [
     moveLeft,
     moveRight,
     researchLeft,
-    researchRight,
+    researchRight
 ];

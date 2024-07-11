@@ -1,17 +1,23 @@
 import { Status } from "./models";
-import stand_left from "./images/stand/stand_left.png";
-import stand_right from "./images/stand/stand_right.png";
+import stand_left from "./images/stand/stand_left.gif";
+import stand_right from "./images/stand/stand_right.gif";
 import move_left from "./images/move/move_left.gif";
 import move_right from "./images/move/move_right.gif";
-import research_left_start from "./images/research/research_left_start.gif";
-import research_left_cycle from "./images/research/research_left_cycle.gif";
-import research_left_end from "./images/research/research_left_end.gif";
-import research_right_start from "./images/research/research_right_start.gif";
-import research_right_cycle from "./images/research/research_right_cycle.gif";
-import research_right_end from "./images/research/research_right_end.gif";
+import research_start_left from "./images/research/research_start_left.gif";
+import research_cycle_left from "./images/research/research_cycle_left.gif";
+import research_end_left from "./images/research/research_end_left.gif";
+import research_start_right from "./images/research/research_start_right.gif";
+import research_cycle_right from "./images/research/research_cycle_right.gif";
+import research_end_right from "./images/research/research_end_right.gif";
+import think_start_left from "./images/think/think_start_left.gif";
+import think_cycle_left from "./images/think/think_cycle_left.gif";
+import think_end_left from "./images/think/think_end_left.gif";
+import think_start_right from "./images/think/think_start_right.gif";
+import think_cycle_right from "./images/think/think_cycle_right.gif";
+import think_end_right from "./images/think/think_end_right.gif";
 
-function getRandomCycle(){
-    return Math.floor(Math.random() * 3) + 1;
+function getRandomCycle() {
+    return Math.floor(Math.random() * 1) + 1;
 }
 
 export const standLeft: Status = {
@@ -44,59 +50,109 @@ const moveRight: Status = {
     nextStatuses: []
 }
 
-const researchLeftStart: Status = {
+export const researchStartLeft: Status = {
     name: "Research Left Start",
-    src: research_left_start,
+    src: research_start_left,
     duration: 900,
     nextStatuses: []
 }
 
-const researchLeftCycle: Status = {
+export const researchCycleLeft: Status = {
     name: "Research Left Cycle",
-    src: research_left_cycle,
+    src: research_cycle_left,
     duration: 2700 * getRandomCycle(),
     nextStatuses: []
 }
 
-const researchLeftEnd: Status = {
+export const researchEndLeft: Status = {
     name: "Research Left End",
-    src: research_left_end,
+    src: research_end_left,
     duration: 900,
     nextStatuses: []
 }
-const researchRightStart: Status = {
+const researchStartRight: Status = {
     name: "Research Right Start",
-    src: research_right_start,
+    src: research_start_right,
     duration: 900,
     nextStatuses: []
 }
 
-const researchRightCycle: Status = {
+const researchCycleRight: Status = {
     name: "Research Right Cycle",
-    src: research_right_cycle,
+    src: research_cycle_right,
     duration: 2700 * getRandomCycle(),
     nextStatuses: []
 }
 
-const researchRightEnd: Status = {
+const researchEndRight: Status = {
     name: "Research Right End",
-    src: research_right_end,
+    src: research_end_right,
+    duration: 900,
+    nextStatuses: []
+}
+
+const thinkStartLeft: Status = {
+    name: "Think Left Start",
+    src: think_start_left,
+    duration: 900,
+    nextStatuses: []
+}
+
+const thinkCycleLeft: Status = {
+    name: "Think Left Cycle",
+    src: think_cycle_left,
+    duration: 2700 * getRandomCycle(),
+    nextStatuses: []
+}
+
+const thinkEndLeft: Status = {
+    name: "Think Left End",
+    src: think_end_left,
+    duration: 900,
+    nextStatuses: []
+}
+
+const thinkStartRight: Status = {
+    name: "Think Right Start",
+    src: think_start_right,
+    duration: 900,
+    nextStatuses: []
+}
+
+const thinkCycleRight: Status = {
+    name: "Think Right Cycle",
+    src: think_cycle_right,
+    duration: 1800 * getRandomCycle(),
+    nextStatuses: []
+}
+
+const thinkEndRight: Status = {
+    name: "Think Right End",
+    src: think_end_right,
     duration: 900,
     nextStatuses: []
 }
 
 // initial state - stand
-standLeft.nextStatuses = [standRight, moveLeft, researchLeftStart];
-standRight.nextStatuses = [standLeft, moveRight, researchRightStart];
+standLeft.nextStatuses = [standRight, researchStartLeft];
+standRight.nextStatuses = [standLeft, researchStartRight];
 
 // move
 moveLeft.nextStatuses = [standLeft];
 moveRight.nextStatuses = [standRight];
 
 // research
-researchLeftStart.nextStatuses = [researchLeftCycle];
-researchLeftCycle.nextStatuses = [researchLeftEnd];
-researchLeftEnd.nextStatuses = [standLeft];
-researchRightStart.nextStatuses = [researchRightCycle];
-researchRightCycle.nextStatuses = [researchRightEnd];
-researchRightEnd.nextStatuses = [standRight];
+researchStartLeft.nextStatuses = [researchCycleLeft];
+researchCycleLeft.nextStatuses = [researchEndLeft];
+researchEndLeft.nextStatuses = [standLeft];
+researchStartRight.nextStatuses = [researchCycleRight];
+researchCycleRight.nextStatuses = [researchEndRight];
+researchEndRight.nextStatuses = [standRight];
+
+// think
+thinkStartLeft.nextStatuses = [thinkCycleLeft];
+thinkCycleLeft.nextStatuses = [thinkEndLeft];
+thinkEndLeft.nextStatuses = [standLeft];
+thinkStartRight.nextStatuses = [thinkCycleRight];
+thinkCycleRight.nextStatuses = [thinkEndRight];
+thinkEndRight.nextStatuses = [standRight];

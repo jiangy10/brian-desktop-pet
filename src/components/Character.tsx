@@ -1,4 +1,4 @@
-import { getStatus } from '../functions/actions';
+// import { getStatus } from '../functions/actions';
 import { Status } from '../models';
 import { useState, useEffect } from 'react';
 import './Character.css';
@@ -10,8 +10,10 @@ export default function Character(): React.JSX.Element {
 
     useEffect(() => {
         setTimeout(() => {
-            const newStatus = getStatus(status);
-            setStatus(newStatus);
+            //get randomly from status.nextStatuses
+            const nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
+            setStatus(nextStatus);
+            console.log(nextStatus);
             // const intervalId = setInterval(() => {
             //     if (newStatus.speed){
             //         const newPosition = position + newStatus.speed;

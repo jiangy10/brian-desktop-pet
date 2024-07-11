@@ -3,4 +3,5 @@ export interface Status {
     src: string;
     duration: number;
     speed?: number;
+    nextStatuses: Status[];
 }

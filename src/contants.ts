@@ -1,51 +1,103 @@
 import { Status } from "./models";
+import stand_left from "./images/stand/stand_left.png";
+import stand_right from "./images/stand/stand_right.png";
 import move_left from "./images/move/move_left.gif";
 import move_right from "./images/move/move_right.gif";
-import research_left from "./images/research/research_left.gif";
-import research_right from "./images/research/research_right.gif";
+import research_left_start from "./images/research/research_left_start.gif";
+import research_left_cycle from "./images/research/research_left_cycle.gif";
+import research_left_end from "./images/research/research_left_end.gif";
+import research_right_start from "./images/research/research_right_start.gif";
+import research_right_cycle from "./images/research/research_right_cycle.gif";
+import research_right_end from "./images/research/research_right_end.gif";
 
 export const standLeft: Status = {
     name: "Stand Left",
-    src: "standLeft",
-    duration: 5000
+    src: stand_left,
+    duration: 2000,
+    nextStatuses: []
 }
 
 const standRight: Status = {
     name: "Stand Right",
-    src: "standRight",
-    duration: 5000
+    src: stand_right,
+    duration: 2000,
+    nextStatuses: []
 }
 
 const moveLeft: Status = {
     name: "Move Left",
     src: move_left,
     duration: 1800,
-    speed: -10
+    speed: -10,
+    nextStatuses: []
 }
 
 const moveRight: Status = {
     name: "Move Right",
     src: move_right,
     duration: 1800,
-    speed: 10
+    speed: 10,
+    nextStatuses: []
 }
 
-const researchLeft: Status = {
-    name: "Research Left",
-    src: research_left,
-    duration: 2700
+const researchLeftStart: Status = {
+    name: "Research Left Start",
+    src: research_left_start,
+    duration: 900,
+    nextStatuses: []
 }
 
-const researchRight: Status = {
-    name: "Research Right",
-    src: research_right,
-    duration: 2700
+const researchLeftCycle: Status = {
+    name: "Research Left Cycle",
+    src: research_left_cycle,
+    duration: 2700,
+    nextStatuses: []
+}
 
+const researchLeftEnd: Status = {
+    name: "Research Left End",
+    src: research_left_end,
+    duration: 900,
+    nextStatuses: []
+}
+const researchRightStart: Status = {
+    name: "Research Right Start",
+    src: research_right_start,
+    duration: 900,
+    nextStatuses: []
+}
+
+const researchRightCycle: Status = {
+    name: "Research Right Cycle",
+    src: research_right_cycle,
+    duration: 2700,
+    nextStatuses: []
+}
+
+const researchRightEnd: Status = {
+    name: "Research Right End",
+    src: research_right_end,
+    duration: 900,
+    nextStatuses: []
 }
 
 export const statuses: Status[] = [
     moveLeft,
     moveRight,
-    researchLeft,
-    researchRight
 ];
+
+// initial state - stand
+standLeft.nextStatuses = [standRight, moveLeft, researchLeftStart];
+standRight.nextStatuses = [standLeft, moveRight, researchRightStart];
+
+// move
+moveLeft.nextStatuses = [standLeft];
+moveRight.nextStatuses = [standRight];
+
+// research
+researchLeftStart.nextStatuses = [researchLeftCycle];
+researchLeftCycle.nextStatuses = [researchLeftEnd];
+researchLeftEnd.nextStatuses = [standLeft];
+researchRightStart.nextStatuses = [researchRightCycle];
+researchLeftCycle.nextStatuses = [researchRightEnd];
+researchRightEnd.nextStatuses = [standRight];

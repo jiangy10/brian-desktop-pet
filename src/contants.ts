@@ -10,24 +10,28 @@ import research_right_start from "./images/research/research_right_start.gif";
 import research_right_cycle from "./images/research/research_right_cycle.gif";
 import research_right_end from "./images/research/research_right_end.gif";
 
+function getRandomCycle(){
+    return Math.floor(Math.random() * 3) + 1;
+}
+
 export const standLeft: Status = {
     name: "Stand Left",
     src: stand_left,
-    duration: 2000,
+    duration: 500,
     nextStatuses: []
 }
 
 const standRight: Status = {
     name: "Stand Right",
     src: stand_right,
-    duration: 2000,
+    duration: 500,
     nextStatuses: []
 }
 
 const moveLeft: Status = {
     name: "Move Left",
     src: move_left,
-    duration: 1800,
+    duration: 1800 * getRandomCycle(),
     speed: -10,
     nextStatuses: []
 }
@@ -35,7 +39,7 @@ const moveLeft: Status = {
 const moveRight: Status = {
     name: "Move Right",
     src: move_right,
-    duration: 1800,
+    duration: 1800 * getRandomCycle(),
     speed: 10,
     nextStatuses: []
 }
@@ -50,7 +54,7 @@ const researchLeftStart: Status = {
 const researchLeftCycle: Status = {
     name: "Research Left Cycle",
     src: research_left_cycle,
-    duration: 2700,
+    duration: 2700 * getRandomCycle(),
     nextStatuses: []
 }
 
@@ -70,7 +74,7 @@ const researchRightStart: Status = {
 const researchRightCycle: Status = {
     name: "Research Right Cycle",
     src: research_right_cycle,
-    duration: 2700,
+    duration: 2700 * getRandomCycle(),
     nextStatuses: []
 }
 
@@ -80,11 +84,6 @@ const researchRightEnd: Status = {
     duration: 900,
     nextStatuses: []
 }
-
-export const statuses: Status[] = [
-    moveLeft,
-    moveRight,
-];
 
 // initial state - stand
 standLeft.nextStatuses = [standRight, moveLeft, researchLeftStart];
@@ -99,5 +98,5 @@ researchLeftStart.nextStatuses = [researchLeftCycle];
 researchLeftCycle.nextStatuses = [researchLeftEnd];
 researchLeftEnd.nextStatuses = [standLeft];
 researchRightStart.nextStatuses = [researchRightCycle];
-researchLeftCycle.nextStatuses = [researchRightEnd];
+researchRightCycle.nextStatuses = [researchRightEnd];
 researchRightEnd.nextStatuses = [standRight];

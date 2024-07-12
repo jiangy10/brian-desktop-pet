@@ -1,53 +1,28 @@
 // import { getStatus } from '../functions/actions';
 import { Status } from '../models';
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Character.css';
 import { researchCycleLeft, researchEndLeft, researchStartLeft, standLeft } from "../contants";
 
+async function preloadGif(src: any) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+    });
+}
+
 export default function Character(): React.JSX.Element {
-    const [status, setStatus] = useState<Status>(researchStartLeft);
+    const [status, setStatus] = useState<Status>(standLeft);
     const [position, setPosition] = useState<number>(0);
-    const nextStatusRef = useRef(researchCycleLeft);
 
     useEffect(() => {
-        //@ts-ignore
-        const preloadImage = (src) => {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = resolve;
-            });
-        };
-
-        const changeStatus = async () => {
-            await preloadImage(nextStatusRef.current.src);
-            setStatus(nextStatusRef.current);
-        };
-
-        const timeoutId = setTimeout(changeStatus, 850);
-
-        return () => clearTimeout(timeoutId);
-    }, [status]);
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         //get randomly from status.nextStatuses
-    //         const nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
-    //         setStatus(nextStatus);
-    //         console.log(nextStatus);
-    //         // const intervalId = setInterval(() => {
-    //         //     if (newStatus.speed){
-    //         //         const newPosition = position + newStatus.speed;
-    //         //         setPosition(newPosition);
-    //         //     }
-    //         // }, newStatus.duration / 10)
-    //     }, status.duration)
-    // }, [status])
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setStatus(researchCycleLeft);
-    //     }, 900);
-    // },[])
+        setTimeout( async() => {
+            const nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
+            await preloadGif(nextStatus.src);
+            setStatus(nextStatus);
+        }, status.duration);
+    }, [status])
 
     return (
         <div className={"container"}>

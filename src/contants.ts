@@ -23,14 +23,14 @@ function getRandomCycle() {
 export const standLeft: Status = {
     name: "Stand Left",
     src: stand_left,
-    duration: 500,
+    duration: 2000,
     nextStatuses: []
 }
 
 const standRight: Status = {
     name: "Stand Right",
     src: stand_right,
-    duration: 500,
+    duration: 2000,
     nextStatuses: []
 }
 
@@ -53,7 +53,7 @@ const moveRight: Status = {
 export const researchStartLeft: Status = {
     name: "Research Left Start",
     src: research_start_left,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
@@ -67,13 +67,13 @@ export const researchCycleLeft: Status = {
 export const researchEndLeft: Status = {
     name: "Research Left End",
     src: research_end_left,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 const researchStartRight: Status = {
     name: "Research Right Start",
     src: research_start_right,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
@@ -87,14 +87,14 @@ const researchCycleRight: Status = {
 const researchEndRight: Status = {
     name: "Research Right End",
     src: research_end_right,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
 const thinkStartLeft: Status = {
     name: "Think Left Start",
     src: think_start_left,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
@@ -108,14 +108,14 @@ const thinkCycleLeft: Status = {
 const thinkEndLeft: Status = {
     name: "Think Left End",
     src: think_end_left,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
 const thinkStartRight: Status = {
     name: "Think Right Start",
     src: think_start_right,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
@@ -129,12 +129,12 @@ const thinkCycleRight: Status = {
 const thinkEndRight: Status = {
     name: "Think Right End",
     src: think_end_right,
-    duration: 900,
+    duration: 850,
     nextStatuses: []
 }
 
 // initial state - stand
-standLeft.nextStatuses = [standRight, researchStartLeft];
+standLeft.nextStatuses = [moveLeft, researchStartLeft, thinkStartLeft];
 standRight.nextStatuses = [standLeft, researchStartRight];
 
 // move

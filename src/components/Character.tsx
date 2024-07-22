@@ -1,8 +1,8 @@
 // import { getStatus } from '../functions/actions';
 import { Status } from '../models';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './Character.css';
-import { researchCycleLeft, researchEndLeft, researchStartLeft, standLeft } from "../contants";
+import { standLeft } from "../contants";
 
 async function preloadGif(src: any) {
     return new Promise((resolve) => {

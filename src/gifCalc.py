@@ -8,6 +8,6 @@ def get_gif_duration(gif_path):
             duration += img.info['duration']
         return duration
 
-gif_path = './images/stand/stand_left.gif'
+gif_path = './images/microscope/microscope_cycle_left.gif'
 duration = get_gif_duration(gif_path)
 print(f'Duration: {duration} milliseconds')

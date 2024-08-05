@@ -28,28 +28,28 @@ import microscope_start_right from "./images/microscope/microscope_start_right.g
 import microscope_cycle_right from "./images/microscope/microscope_cycle_right.gif";
 import microscope_end_right from "./images/microscope/microscope_end_right.gif";
 
-function getRandomCycle() {
-    return Math.floor(Math.random() * 3) + 1;
+function getRandomCycle(cycle: number) {
+    return Math.floor(Math.random() * cycle) + 1;
 }
 
 export const standLeft: Status = {
     name: "Stand Left",
     src: stand_left,
-    duration: 2000,
+    duration: 5000 * getRandomCycle(5),
     nextStatuses: []
 }
 
 const standRight: Status = {
     name: "Stand Right",
     src: stand_right,
-    duration: 2000,
+    duration: 5000 * getRandomCycle(5),
     nextStatuses: []
 }
 
 const moveLeft: Status = {
     name: "Move Left",
     src: move_left,
-    duration: 1800 * getRandomCycle(),
+    duration: 1800 * getRandomCycle(5),
     speed: -10,
     nextStatuses: []
 }
@@ -57,7 +57,7 @@ const moveLeft: Status = {
 const moveRight: Status = {
     name: "Move Right",
     src: move_right,
-    duration: 1800 * getRandomCycle(),
+    duration: 1800 * getRandomCycle(5),
     speed: 10,
     nextStatuses: []
 }
@@ -72,7 +72,7 @@ const researchStartLeft: Status = {
 const researchCycleLeft: Status = {
     name: "Research Left Cycle",
     src: research_cycle_left,
-    duration: 2700 * getRandomCycle(),
+    duration: 2700 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -92,7 +92,7 @@ const researchStartRight: Status = {
 const researchCycleRight: Status = {
     name: "Research Right Cycle",
     src: research_cycle_right,
-    duration: 2700 * getRandomCycle(),
+    duration: 2700 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -113,7 +113,7 @@ const thinkStartLeft: Status = {
 const thinkCycleLeft: Status = {
     name: "Think Left Cycle",
     src: think_cycle_left,
-    duration: 2700 * getRandomCycle(),
+    duration: 2700 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -134,7 +134,7 @@ const thinkStartRight: Status = {
 const thinkCycleRight: Status = {
     name: "Think Right Cycle",
     src: think_cycle_right,
-    duration: 1800 * getRandomCycle(),
+    duration: 1800 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -155,7 +155,7 @@ const noteStartLeft: Status = {
 const noteCycleLeft: Status = {
     name: "Note Left Cycle",
     src: note_cycle_left,
-    duration: 2700 * getRandomCycle(),
+    duration: 2700 * getRandomCycle(3),
     nextStatuses: []
 
 }
@@ -177,7 +177,7 @@ const noteStartRight: Status = {
 const noteCycleRight: Status = {
     name: "Note Right Cycle",
     src: note_cycle_right,
-    duration: 2700 * getRandomCycle(),
+    duration: 2700 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -198,7 +198,7 @@ const microscopeStartLeft: Status = {
 const microscopeCycleLeft: Status = {
     name: "Microscope Left Cycle",
     src: microscope_cycle_left,
-    duration: 1800 * getRandomCycle(),
+    duration: 1800 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -219,7 +219,7 @@ const microscopeStartRight: Status = {
 const microscopeCycleRight: Status = {
     name: "Microscope Right Cycle",
     src: microscope_cycle_right,
-    duration: 1800 * getRandomCycle(),
+    duration: 1800 * getRandomCycle(3),
     nextStatuses: []
 }
 
@@ -231,17 +231,17 @@ const microscopeEndRight: Status = {
 }
 
 // initial state - stand
-standLeft.nextStatuses = [moveLeft,];
-standRight.nextStatuses = [standLeft, researchStartRight];
+standLeft.nextStatuses = [standRight, moveLeft, researchStartLeft, thinkStartLeft, noteStartLeft, microscopeStartLeft];
+standRight.nextStatuses = [standLeft, moveRight, researchStartRight, thinkStartRight, noteStartRight, microscopeCycleRight];
 
 // move
-moveLeft.nextStatuses = [researchStartLeft];
+moveLeft.nextStatuses = [standLeft];
 moveRight.nextStatuses = [standRight];
 
 // research
 researchStartLeft.nextStatuses = [researchCycleLeft];
 researchCycleLeft.nextStatuses = [researchEndLeft];
-researchEndLeft.nextStatuses = [thinkStartLeft];
+researchEndLeft.nextStatuses = [standLeft];
 researchStartRight.nextStatuses = [researchCycleRight];
 researchCycleRight.nextStatuses = [researchEndRight];
 researchEndRight.nextStatuses = [standRight];
@@ -249,7 +249,7 @@ researchEndRight.nextStatuses = [standRight];
 // think
 thinkStartLeft.nextStatuses = [thinkCycleLeft];
 thinkCycleLeft.nextStatuses = [thinkEndLeft];
-thinkEndLeft.nextStatuses = [noteStartLeft];
+thinkEndLeft.nextStatuses = [standLeft];
 thinkStartRight.nextStatuses = [thinkCycleRight];
 thinkCycleRight.nextStatuses = [thinkEndRight];
 thinkEndRight.nextStatuses = [standRight];
@@ -257,7 +257,7 @@ thinkEndRight.nextStatuses = [standRight];
 // note
 noteStartLeft.nextStatuses = [noteCycleLeft];
 noteCycleLeft.nextStatuses = [noteEndLeft];
-noteEndLeft.nextStatuses = [microscopeStartLeft];
+noteEndLeft.nextStatuses = [standLeft];
 noteStartRight.nextStatuses = [noteCycleRight];
 noteCycleRight.nextStatuses = [noteEndRight];
 noteEndRight.nextStatuses = [standRight];

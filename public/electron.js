@@ -50,7 +50,7 @@ function createWindow() {
   win.setTouchBar(createTouchBar())
   win.setIgnoreMouseEvents(true);
   win.loadURL('http://localhost:3000');
-  move(win);
+  // move(win); //warning red lines, commented for later use (probably?)
 }
 
 app.whenReady().then(createWindow);

@@ -35,14 +35,14 @@ function getRandomCycle(cycle: number) {
 export const standLeft: Status = {
     name: "Stand Left",
     src: stand_left,
-    duration: 5000 * getRandomCycle(5),
+    duration: 1000 * getRandomCycle(5),
     nextStatuses: []
 }
 
 const standRight: Status = {
     name: "Stand Right",
     src: stand_right,
-    duration: 5000 * getRandomCycle(5),
+    duration: 1000 * getRandomCycle(5),
     nextStatuses: []
 }
 

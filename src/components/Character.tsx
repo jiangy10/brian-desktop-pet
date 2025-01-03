@@ -14,14 +14,10 @@ async function preloadGif(src: string) {
 function getNextStatus(position: number, status: Status): Status {
     let nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
     if (position >= 1150) {
-        while (nextStatus === moveRight){
-            nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
-        }
+        nextStatus = moveLeft;
     }
     if (position <= 150) {
-        while (nextStatus === moveLeft){
-            nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
-        }
+        nextStatus = moveRight;
     }
     return nextStatus;
 }

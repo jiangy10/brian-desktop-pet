@@ -36,29 +36,31 @@ export const standLeft: Status = {
     name: "Stand Left",
     src: stand_left,
     duration: 1000 * getRandomCycle(5),
-    nextStatuses: []
+    speed: 0,
+    nextStatuses: [],
 }
 
-const standRight: Status = {
+export const standRight: Status = {
     name: "Stand Right",
     src: stand_right,
     duration: 1000 * getRandomCycle(5),
+    speed: 0,
     nextStatuses: []
 }
 
-const moveLeft: Status = {
+export const moveLeft: Status = {
     name: "Move Left",
     src: move_left,
     duration: 1800 * getRandomCycle(5),
-    speed: -10,
+    speed: -0.1,
     nextStatuses: []
 }
 
-const moveRight: Status = {
+export const moveRight: Status = {
     name: "Move Right",
     src: move_right,
     duration: 1800 * getRandomCycle(5),
-    speed: 10,
+    speed: 0.1,
     nextStatuses: []
 }
 
@@ -66,6 +68,7 @@ const researchStartLeft: Status = {
     name: "Research Left Start",
     src: research_start_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -73,6 +76,7 @@ const researchCycleLeft: Status = {
     name: "Research Left Cycle",
     src: research_cycle_left,
     duration: 2700 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -80,12 +84,14 @@ const researchEndLeft: Status = {
     name: "Research Left End",
     src: research_end_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 const researchStartRight: Status = {
     name: "Research Right Start",
     src: research_start_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -93,6 +99,7 @@ const researchCycleRight: Status = {
     name: "Research Right Cycle",
     src: research_cycle_right,
     duration: 2700 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -100,6 +107,7 @@ const researchEndRight: Status = {
     name: "Research Right End",
     src: research_end_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -107,6 +115,7 @@ const thinkStartLeft: Status = {
     name: "Think Left Start",
     src: think_start_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -114,6 +123,7 @@ const thinkCycleLeft: Status = {
     name: "Think Left Cycle",
     src: think_cycle_left,
     duration: 2700 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -121,6 +131,7 @@ const thinkEndLeft: Status = {
     name: "Think Left End",
     src: think_end_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -128,6 +139,7 @@ const thinkStartRight: Status = {
     name: "Think Right Start",
     src: think_start_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -135,6 +147,7 @@ const thinkCycleRight: Status = {
     name: "Think Right Cycle",
     src: think_cycle_right,
     duration: 1800 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -142,6 +155,7 @@ const thinkEndRight: Status = {
     name: "Think Right End",
     src: think_end_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -149,6 +163,7 @@ const noteStartLeft: Status = {
     name: "Note Left Start",
     src: note_start_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -156,6 +171,7 @@ const noteCycleLeft: Status = {
     name: "Note Left Cycle",
     src: note_cycle_left,
     duration: 2700 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 
 }
@@ -164,6 +180,7 @@ const noteEndLeft: Status = {
     name: "Note Left End",
     src: note_end_left,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -171,6 +188,7 @@ const noteStartRight: Status = {
     name: "Note Right Start",
     src: note_start_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -178,6 +196,7 @@ const noteCycleRight: Status = {
     name: "Note Right Cycle",
     src: note_cycle_right,
     duration: 2700 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -185,6 +204,7 @@ const noteEndRight: Status = {
     name: "Note Right End",
     src: note_end_right,
     duration: 850,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -192,6 +212,7 @@ const microscopeStartLeft: Status = {
     name: "Microscope Left Start",
     src: microscope_start_left,
     duration: 1300,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -199,6 +220,7 @@ const microscopeCycleLeft: Status = {
     name: "Microscope Left Cycle",
     src: microscope_cycle_left,
     duration: 1800 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -206,6 +228,7 @@ const microscopeEndLeft: Status = {
     name: "Microscope Left End",
     src: microscope_end_left,
     duration: 1300,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -213,6 +236,7 @@ const microscopeStartRight: Status = {
     name: "Microscope Right Start",
     src: microscope_start_right,
     duration: 1300,
+    speed: 0,
     nextStatuses: []
 }
 
@@ -220,6 +244,7 @@ const microscopeCycleRight: Status = {
     name: "Microscope Right Cycle",
     src: microscope_cycle_right,
     duration: 1800 * getRandomCycle(3),
+    speed: 0,
     nextStatuses: []
 }
 
@@ -227,6 +252,7 @@ const microscopeEndRight: Status = {
     name: "Microscope Right End",
     src: microscope_end_right,
     duration: 1300,
+    speed: 0,
     nextStatuses: []
 }
 

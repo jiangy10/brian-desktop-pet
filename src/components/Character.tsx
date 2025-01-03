@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Status } from '../models';
-import { standLeft } from "../contants";
+import { standLeft, moveLeft, moveRight } from "../contants";
 import './Character.css';
 
 async function preloadGif(src: string) {
@@ -11,6 +11,21 @@ async function preloadGif(src: string) {
     });
 }
 
+function getNextStatus(position: number, status: Status): Status {
+    let nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
+    if (position >= 1150) {
+        while (nextStatus === moveRight){
+            nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
+        }
+    }
+    if (position <= 150) {
+        while (nextStatus === moveLeft){
+            nextStatus = status.nextStatuses[Math.floor(Math.random() * status.nextStatuses.length)];
+        }
+    }
+    return nextStatus;
+}
+
 export default function Character(): React.JSX.Element {
     const [status, setStatus] = useState<Status>(standLeft);
     const [position, setPosition] = useState<number>(700);
@@ -18,37 +33,22 @@ export default function Character(): React.JSX.Element {
     const timeoutRef = useRef<number | null>(null);
     
     useEffect(() => {
-        if (status.speed) {
-            intervalRef.current = window.setInterval(() => {
-                setPosition((prevPosition) => prevPosition - 0.08);
-            }, 15);
+
+        intervalRef.current = window.setInterval(() => {
+            setPosition((prevPosition) => prevPosition + status.speed);
+        }, 15);
+
+        timeoutRef.current = window.setTimeout(() => {
+            if (intervalRef.current !== null) {
+                clearInterval(intervalRef.current);
+            }
             
-            timeoutRef.current = window.setTimeout(() => {
-                if (intervalRef.current !== null) {
-                    clearInterval(intervalRef.current);
-                }
-                
-                const nextStatus =
-                  status.nextStatuses[
-                    Math.floor(Math.random() * status.nextStatuses.length)
-                    ];
-                
-                preloadGif(nextStatus.src).then(() => {
-                    setStatus(nextStatus);
-                });
-            }, status.duration);
-        } else {
-            timeoutRef.current = window.setTimeout(() => {
-                const nextStatus =
-                  status.nextStatuses[
-                    Math.floor(Math.random() * status.nextStatuses.length)
-                    ];
-                
-                preloadGif(nextStatus.src).then(() => {
-                    setStatus(nextStatus);
-                });
-            }, status.duration);
-        }
+            const nextStatus = getNextStatus(position, status);
+            
+            preloadGif(nextStatus.src).then(() => {
+                setStatus(nextStatus);
+            });
+        }, status.duration);
         
         return () => {
             if (intervalRef.current !== null) {

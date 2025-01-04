@@ -258,7 +258,7 @@ const microscopeEndRight: Status = {
 
 // initial state - stand
 standLeft.nextStatuses = [standRight, moveLeft, researchStartLeft, thinkStartLeft, noteStartLeft, microscopeStartLeft];
-standRight.nextStatuses = [standLeft, moveRight, researchStartRight, thinkStartRight, noteStartRight, microscopeCycleRight];
+standRight.nextStatuses = [standLeft, moveRight, researchStartRight, thinkStartRight, noteStartRight, microscopeStartRight];
 
 // move
 moveLeft.nextStatuses = [standLeft];

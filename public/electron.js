@@ -44,9 +44,13 @@ function createWindow() {
     alwaysOnTop: true,
     focusable: false,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      enableLargerThanScreen: true,
+    },
+    backgroundColor: '#00FFFFFF',
+    hasShadow: false,
   })
+  win.webContents.setBackgroundThrottling(false);
   win.setTouchBar(createTouchBar())
   win.setIgnoreMouseEvents(true);
   win.loadURL('http://localhost:3000');

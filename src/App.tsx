@@ -1,5 +1,6 @@
 import './App.css';
 import Character from './components/Character';
+import logo from './images/logo/logo.jpg';
 
 function App() {
   return (
